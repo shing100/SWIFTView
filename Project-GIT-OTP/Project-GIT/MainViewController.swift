@@ -12,7 +12,6 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var pinTextLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var timerLabel: UILabel!
 
     var fileMgr: NSFileManager = NSFileManager.defaultManager()
     var docsDir: String?
@@ -27,7 +26,7 @@ class MainViewController: UIViewController {
         
         self.updateKey()
         
-        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(MainViewController.countDown), userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(MainViewController.refresh), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,9 +34,13 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func countDown() {
-        if(count > 0) {
-            timerLabel.text = "Count Down : " + String(count--)
+    func refresh() {
+        if count > 0 {
+            self.updateKey()
+        }
+        else if count == 0 {
+            self.updateKey()
+            count = 30
         }
     }
     
