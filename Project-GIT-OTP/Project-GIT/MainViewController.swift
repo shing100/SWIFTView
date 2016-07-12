@@ -17,15 +17,12 @@ class MainViewController: UIViewController {
     var docsDir: String?
     var dataFile: String?
     var key: String?
-    var count = 30
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.dataRead()
-        
         self.updateKey()
-        
         NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(MainViewController.refresh), userInfo: nil, repeats: true)
     }
 
@@ -35,13 +32,7 @@ class MainViewController: UIViewController {
     }
     
     func refresh() {
-        if count > 0 {
             self.updateKey()
-        }
-        else if count == 0 {
-            self.updateKey()
-            count = 30
-        }
     }
     
     func updateKey() {
