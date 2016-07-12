@@ -6,4 +6,8 @@ this project is simple otp view in swift
 
 
 
-use : google lib
+
+Credits
+
+Google Authenticator Project
+ekscrypto/Base32
